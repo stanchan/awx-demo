@@ -1,0 +1,16 @@
+version: "3"
+services:
+
+  docker-pets:
+    image: docker-pets:latest
+    restart: unless-stopped
+    ports:
+      - "80:5000"
+    networks:
+      demo:
+        aliases:
+          - docker-pets
+
+networks:
+  demo:
+    driver: bridge

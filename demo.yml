@@ -1,0 +1,25 @@
+---
+- name: Setup docker host
+  hosts: docker
+  gather_facts: no
+  vars:
+    distribution: Alpine
+    docker_build_environment: no
+    docker_glibc_environment: no
+  tasks:
+    - name: install python 2 on alpine
+      raw: test -e /usr/bin/python || apk add --update python
+      when: distribution == "Alpine"
+
+    - name: install python 2 on debian
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+      when: distribution == "Debian"
+
+- name: setup docker host
+  hosts: docker
+  gather_facts: yes
+  tasks:
+    - name: install docker
+      include_role:
+        name: docker
+      when: install_docker

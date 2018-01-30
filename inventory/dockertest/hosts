@@ -1,0 +1,16 @@
+awxhost ansible_host=localhost ansible_host_ip=localhost ansible_become=false
+
+[awx]
+awxhost
+
+[docker]
+awxhost
+
+[teleport]
+awxhost
+
+[teleport-auth]
+awxhost
+
+[teleport-proxy]
+awxhost

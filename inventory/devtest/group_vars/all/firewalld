@@ -1,0 +1,144 @@
+---
+firewalld_enabled: yes
+firewalld_default_zone: home
+
+firewalld_zone_interface:
+  home: eno1
+
+firewalld_services:
+  puppet:
+    name: Puppet
+    description: Puppet Master port
+    ports:
+      1:
+        proto: tcp
+        port: 8140
+  puppetdb:
+    name: PuppetDB
+    description: PuppetDB port
+    ports:
+      1:
+        proto: tcp
+        port: 8081
+  postgresql:
+    name: PostgreSQL
+    description: PostgreSQL Database port
+    ports:
+      1:
+        proto: tcp
+        port: 5432
+  caddy:
+    name: Caddy
+    description: Caddy ports
+    ports:
+      1:
+        proto: tcp
+        port: 80
+      2:
+        proto: tcp
+        port: 443
+      3:
+        proto: tcp
+        port: 2015
+      4:
+        proto: tcp
+        port: 8443
+  teleport:
+    name: Teleport
+    description: Teleport ports
+    ports:
+      1:
+        proto: tcp
+        port: 3022
+      2:
+        proto: tcp
+        port: 3023
+      3:
+        proto: tcp
+        port: 3024
+      4:
+        proto: tcp
+        port: 3025
+      5:
+        proto: tcp
+        port: 3080
+  awx:
+    name: AWX
+    description: AWX port
+    ports:
+      1:
+        proto: tcp
+        port: 8052
+  homeassistant:
+    name: Home Assistant
+    description: Home Assistant port
+    ports:
+      1:
+        proto: tcp
+        port: 8123
+  dr-provision:
+    name: DR Provision
+    description: DR Provision ports
+    ports:
+      1:
+        proto: tcp
+        port: 4011
+      2:
+        proto: tcp
+        port: 8091
+      3:
+        proto: tcp
+        port: 8092
+      4:
+        proto: udp
+        port: 67
+      5:
+        proto: udp
+        port: 69
+
+firewalld_service_rules: 
+  mdns:
+    state: enabled
+    zone: home
+    permanent: yes
+    immediate: yes
+  ipp-client:
+    state: enabled
+    zone: home
+    permanent: yes
+    immediate: yes
+  dhcpv6-client:
+    state: enabled
+    zone: home
+    permanent: yes
+    immediate: yes
+  samba-client:
+    state: enabled
+    zone: home
+    permanent: yes
+    immediate: yes
+  ssh:
+    state: enabled
+    zone: home
+    permanent: yes
+    immediate: yes
+  teleport:
+    state: enabled
+    zone: home
+    permanent: yes
+    immediate: yes
+  awx:
+    state: enabled
+    zone: home
+    permanent: yes
+    immediate: yes
+  caddy:
+    state: enabled
+    zone: home
+    permanent: yes
+    immediate: yes
+  dr-provision:
+    state: enabled
+    zone: home
+    permanent: yes
+    immediate: yes

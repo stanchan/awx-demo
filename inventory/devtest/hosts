@@ -1,0 +1,22 @@
+awxhost ansible_host=172.16.1.100 ansible_host_ip=172.16.1.100 ansible_user=vagrant ansible_become=true
+
+[awx]
+awxhost
+
+[awx-task]
+awxhost
+
+[awx-web]
+awxhost
+
+[docker]
+awxhost
+
+[teleport]
+awxhost
+
+[teleport-auth]
+awxhost
+
+[teleport-proxy]
+awxhost
